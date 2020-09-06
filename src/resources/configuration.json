@@ -1,0 +1,44 @@
+{
+    "primary_language": "en",
+    "debugging_mode": true,
+    "enable_ppm": true,
+    "router": [
+        {"path": "/", "page": "index"},
+        {"path": "/stream", "page": "api"}
+    ],
+    "libraries": {
+        "SecuredWebSessions": {
+            "directory_name": "sws",
+            "autoloader": "sws.php",
+            "check_class_exists": true,
+            "namespace": "sws",
+            "main_class": "sws"
+        },
+        "Support": {
+            "package_name": "net.intellivoid.support",
+            "version": "latest",
+            "import_dependencies": true,
+            "throw_error": true
+        },
+        "COASniffle": {
+            "package_name": "net.intellivoid.coa_sniffle",
+            "version": "latest",
+            "import_dependencies": true,
+            "throw_error": true
+        },
+        "Todo": {
+            "package_name": "net.intellivoid.todo",
+            "version": "latest",
+            "import_dependencies": true,
+            "throw_error": true
+        }
+    },
+    "runtime_scripts": {
+        "initialize": ["coa_sniffles.php"],
+        "on_page_load": ["check_auth.php", "require_auth.php", "authenticate_coa.php"],
+        "page_loaded": [],
+        "after_request": [],
+        "on_request": ["maintenance.php"],
+        "on_import": []
+    }
+}
