@@ -289,7 +289,63 @@ $(function() {
           $('.no-items').removeClass('show');
 
       }
-  })
+  });
+
+    $(document).on('click', '.todo-item-restore', function(e){
+        var item = this;
+        e.stopPropagation();
+        $(item).closest('.todo-item').remove();
+        var task_id = $(this).closest('.todo-item').find('.todo-item-id').prop("value");
+        $.ajax({
+            type:"POST",
+            url: "<?php \DynamicalWeb\DynamicalWeb::getRoute("api", [], true); ?>",
+            data: {
+                "action": "restore_task",
+                "task_id": task_id
+            }
+        });
+
+        var tbl_row = $(".todo-item:visible").length; //here tbl_test is table name
+
+        //Check if table has row or not
+        if ( tbl_row == 0 ){
+            if(!$('.no-items').hasClass('show') ){
+                $('.no-items').addClass('show');
+            }
+        }
+        else{
+            $('.no-items').removeClass('show');
+
+        }
+    });
+
+    $(document).on('click', '.todo-item-perma-delete', function(e){
+        var item = this;
+        e.stopPropagation();
+        $(item).closest('.todo-item').remove();
+        var task_id = $(this).closest('.todo-item').find('.todo-item-id').prop("value");
+        $.ajax({
+            type:"POST",
+            url: "<?php \DynamicalWeb\DynamicalWeb::getRoute("api", [], true); ?>",
+            data: {
+                "action": "perma_delete_task",
+                "task_id": task_id
+            }
+        });
+
+        var tbl_row = $(".todo-item:visible").length; //here tbl_test is table name
+
+        //Check if table has row or not
+        if ( tbl_row == 0 ){
+            if(!$('.no-items').hasClass('show') ){
+                $('.no-items').addClass('show');
+            }
+        }
+        else{
+            $('.no-items').removeClass('show');
+
+        }
+    });
 
   // Complete task strike through
   $(document).on('click', '.todo-item input', function(event){

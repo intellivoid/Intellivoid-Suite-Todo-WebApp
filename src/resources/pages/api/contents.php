@@ -78,6 +78,14 @@
                 HTML::importScript("delete_task");
                 break;
 
+            case "restore_task":
+                HTML::importScript("restore_task");
+                break;
+
+            case "perma_delete_task":
+                HTML::importScript("perma_delete_task");
+                break;
+
             default:
                 jsonResponse(false, 400, array(
                     "error_message" => "The action '" . $_POST["action"] . "' is not valid"

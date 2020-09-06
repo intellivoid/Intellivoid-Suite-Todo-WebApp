@@ -155,9 +155,27 @@
                     <a class="todo-item-color mr-1">
                         <i class="feather icon-circle"></i>
                     </a>
-                    <a class="todo-item-delete">
-                        <i class="feather icon-trash"></i>
-                    </a>
+                    <?PHP
+                        if($task->Properties->IsDeleted)
+                        {
+                            ?>
+                            <a class="todo-item-restore text-light mr-1">
+                                <i class="feather icon-corner-up-left"></i>
+                            </a>
+                            <a class="todo-item-perma-delete text-light">
+                                <i class="feather icon-trash"></i>
+                            </a>
+                            <?PHP
+                        }
+                        else
+                        {
+                            ?>
+                            <a class="todo-item-delete text-light">
+                                <i class="feather icon-trash"></i>
+                            </a>
+                            <?PHP
+                        }
+                    ?>
                 </div>
             </div>
             <p class="todo-desc truncate mb-0"><?PHP HTML::print($task->Description); ?></p>
