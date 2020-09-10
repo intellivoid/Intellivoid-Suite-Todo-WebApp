@@ -32,7 +32,7 @@
         padding: 0 1.5rem;
         position: relative;
         overflow: scroll;
-        height: calc(100% - 5.4rem); }
+        height: calc(100% - 4.7rem); }
       .todo-application .content-area-wrapper .sidebar .todo-sidebar .todo-app-menu .list-group .list-group-item {
         padding-left: 0;
         padding-right: 0; }
@@ -78,6 +78,11 @@
       border-bottom: 1px solid #dae1e7;
       background-color: #fff;
       border-top-right-radius: 0.5rem; }
+    .todo-application .content-area-wrapper .content-right .app-fixed-info {
+      border-top-right-radius: 0.5rem;
+      padding-left: 1rem;
+      margin-top: 5px;
+      margin-bottom: 5px; }
       .todo-application .content-area-wrapper .content-right .app-fixed-search .form-control-position {
         font-size: calc(1rem * 1.1); }
       .todo-application .content-area-wrapper .content-right .app-fixed-search input {
@@ -113,7 +118,7 @@
     .todo-application .content-area-wrapper .content-right .todo-task-list {
       position: relative;
       height: calc(100vh - 16.35rem);
-      height: calc(var(--vh, 1vh) * 100 - 16.35rem); }
+      height: calc(var(--vh, 1vh) * 100 - 18.50rem); }
       .todo-application .content-area-wrapper .content-right .todo-task-list .todo-task-list-wrapper {
         padding: 0;
         margin: 0; }

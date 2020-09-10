@@ -4,7 +4,9 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use Todo\Abstracts\Color;
-    use Todo\Exceptions\InvalidTaskDescriptionException;
+use Todo\Abstracts\SearchMethods\GroupSearchMethod;
+use Todo\Exceptions\GroupNotFoundException;
+use Todo\Exceptions\InvalidTaskDescriptionException;
     use Todo\Exceptions\InvalidTaskTitleException;
     use Todo\Todo;
 
@@ -26,6 +28,7 @@
         $Color = Color::None;
         $Title = null;
         $Description = null;
+        $SelectedGroup = "main";
 
         if(isset($_POST["color"]))
         {
@@ -47,14 +50,62 @@
             $Color = (int)$_POST["color"];
         }
 
+        if(isset($_POST["group"]))
+        {
+            $SelectedGroup = $_POST["group"];
+        }
+
         /** @var Todo $TodoManager */
         $TodoManager = DynamicalWeb::getMemoryObject("todo");
 
+        // Resolve the group ID
+        $SelectedGroupID = null;
+        if($SelectedGroup !== "main")
+        {
+            $GroupObject = null;
+
+            try
+            {
+                $GroupObject = $TodoManager->getGroupManager()->getGroup(GroupSearchMethod::byPublicId, $SelectedGroup);
+            }
+            catch (GroupNotFoundException $e)
+            {
+                unset($e);
+            }
+            catch(Exception $e)
+            {
+                Actions::redirect(DynamicalWeb::getRoute("index", array(
+                    "callback" => "104", "resource" => "create_task"
+                )));
+            }
+
+            if($GroupObject !== null)
+            {
+                if($GroupObject->AccountID == WEB_ACCOUNT_ID)
+                {
+                    if($GroupObject->IsDeleted == false)
+                    {
+                        $SelectedGroupID = $GroupObject->ID;
+                    }
+                }
+            }
+        }
+
         try
         {
-            $TodoManager->getTasksManager()->createTask(WEB_ACCOUNT_ID, $Title, $Description);
+            if($SelectedGroupID == null)
+            {
+                $TodoManager->getTasksManager()->createTask(WEB_ACCOUNT_ID, $Title, $Description);
+            }
+            else
+            {
+                $TodoManager->getTasksManager()->createTask(WEB_ACCOUNT_ID, $Title, $Description, [], (int)$SelectedGroupID);
 
-            Actions::redirect(DynamicalWeb::getRoute("index"));
+            }
+
+            $_GET["action"] = "none";
+            $_GET["callback"] = "none";
+            Actions::redirect(DynamicalWeb::getRoute("index", $_GET));
         }
         catch (InvalidTaskDescriptionException $e)
         {

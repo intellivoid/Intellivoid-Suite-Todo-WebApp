@@ -86,6 +86,10 @@
                 HTML::importScript("perma_delete_task");
                 break;
 
+            case "update_task_color":
+                HTML::importScript("update_task_color");
+                break;
+
             default:
                 jsonResponse(false, 400, array(
                     "error_message" => "The action '" . $_POST["action"] . "' is not valid"

@@ -1,11 +1,19 @@
 <?php
 
+    use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Javascript;
 
     HTML::importScript("create_task");
+    HTML::importScript("create_group");
+    HTML::importScript("edit_group_name");
+    HTML::importScript("delete_group");
     HTML::importScript("render_alert");
     HTML::importScript("check_filter");
+
+    HTML::importScript("get_group");
+    HTML::importScript("render_tasks");
+    HTML::importScript("render_groups");
 
 ?>
 <!DOCTYPE html>
@@ -15,9 +23,7 @@
         <title>Todo</title>
     </head>
     <body class="horizontal-layout horizontal-menu dark-layout content-left-sidebar todo-application navbar-floating footer-static" data-open="hover" data-menu="horizontal-menu" data-col="2-columns" data-layout="dark-layout">
-
         <?PHP HTML::importSection('main_nav'); ?>
-
         <div class="app-content content">
             <div class="content-overlay"></div>
             <?PHP HTML::importScript("callbacks"); ?>
@@ -35,50 +41,61 @@
                                 <div class="sidebar-menu-list">
                                     <?PHP
                                         $FilterParameters = $_GET;
+                                        $CurrentGroup = "main";
+
+                                        if(isset($_GET["group"]))
+                                        {
+                                            $CurrentGroup = $_GET["group"];
+                                        }
+
                                     ?>
                                     <div class="list-group list-group-filters font-medium-1">
                                         <?PHP $FilterParameters["filter"] = "all"; ?>
-                                        <a href="<?PHP \DynamicalWeb\DynamicalWeb::getRoute("index", $FilterParameters, true); ?>" class="list-group-item list-group-item-action border-0 pt-0<?PHP if(TASKS_FILTER == "all"){ HTML::print(" active"); } ?>">
-                                            <i class="font-medium-5 feather icon-mail mr-50"></i> All
+                                        <?PHP $FilterParameters["group"] = "main"; ?>
+                                        <a href="<?PHP DynamicalWeb::getRoute("index", $FilterParameters, true); ?>" class="list-group-item list-group-item-action border-0 pt-0<?PHP if($CurrentGroup == "main"){ HTML::print(" active"); } ?>">
+                                            <i class="font-medium-5 feather icon-home mr-50"></i> Overview
                                         </a>
                                     </div>
                                     <hr>
                                     <h5 class="mt-2 mb-1 pt-25">Filters</h5>
                                     <div class="list-group list-group-filters font-medium-1">
+                                        <?PHP $FilterParameters["filter"] = "all"; ?>
+                                        <?PHP $FilterParameters["group"] = $CurrentGroup; ?>
+                                        <a href="<?PHP DynamicalWeb::getRoute("index", $FilterParameters, true); ?>" class="list-group-item list-group-item-action border-0<?PHP if(TASKS_FILTER == "all"){ HTML::print(" active"); } ?>">
+                                            <i class="font-medium-5 feather icon-menu mr-50"></i> All
+                                        </a>
                                         <?PHP $FilterParameters["filter"] = "uncompleted"; ?>
-                                        <a href="<?PHP \DynamicalWeb\DynamicalWeb::getRoute("index", $FilterParameters, true); ?>" class="list-group-item list-group-item-action border-0<?PHP if(TASKS_FILTER == "uncompleted"){ HTML::print(" active"); } ?>">
+                                        <?PHP $FilterParameters["group"] = $CurrentGroup; ?>
+                                        <a href="<?PHP DynamicalWeb::getRoute("index", $FilterParameters, true); ?>" class="list-group-item list-group-item-action border-0<?PHP if(TASKS_FILTER == "uncompleted"){ HTML::print(" active"); } ?>">
                                             <i class="font-medium-5 feather icon-alert-circle mr-50"></i> Uncompleted
                                         </a>
                                         <?PHP $FilterParameters["filter"] = "completed"; ?>
-                                        <a href="<?PHP \DynamicalWeb\DynamicalWeb::getRoute("index", $FilterParameters, true); ?>" class="list-group-item list-group-item-action border-0<?PHP if(TASKS_FILTER == "completed"){ HTML::print(" active"); } ?>">
+                                        <?PHP $FilterParameters["group"] = $CurrentGroup; ?>
+                                        <a href="<?PHP DynamicalWeb::getRoute("index", $FilterParameters, true); ?>" class="list-group-item list-group-item-action border-0<?PHP if(TASKS_FILTER == "completed"){ HTML::print(" active"); } ?>">
                                             <i class="font-medium-5 feather icon-check-circle mr-50"></i> Completed
                                         </a>
                                         <?PHP $FilterParameters["filter"] = "deleted"; ?>
-                                        <a href="<?PHP \DynamicalWeb\DynamicalWeb::getRoute("index", $FilterParameters, true); ?>" class="list-group-item list-group-item-action border-0<?PHP if(TASKS_FILTER == "deleted"){ HTML::print(" active"); } ?>">
+                                        <?PHP $FilterParameters["group"] = $CurrentGroup; ?>
+                                        <a href="<?PHP DynamicalWeb::getRoute("index", $FilterParameters, true); ?>" class="list-group-item list-group-item-action border-0<?PHP if(TASKS_FILTER == "deleted"){ HTML::print(" active"); } ?>">
                                             <i class="font-medium-5 feather icon-trash mr-50"></i> Trashed
                                         </a>
                                     </div>
                                     <hr>
-                                    <h5 class="mt-2 mb-1 pt-25">Labels</h5>
+                                    <h5 class="mt-2 mb-1 pt-25">
+                                        Groups
+                                        <a class="float-right d-flex" data-toggle="modal" data-target="#addGroupModal" style="justify-content: flex-end;">
+                                            <i class="feather icon-plus-square"></i>
+                                        </a>
+                                    </h5>
                                     <div class="list-group list-group-labels font-medium-1">
-                                        <a href="#" class="list-group-item list-group-item-action border-0 d-flex align-items-center">
-                                            <span class="bullet bullet-primary mr-1"></span> Frontend
-                                        </a>
-                                        <a href="#" class="list-group-item list-group-item-action border-0 d-flex align-items-center">
-                                            <span class="bullet bullet-warning mr-1"></span> Backend
-                                        </a>
-                                        <a href="#" class="list-group-item list-group-item-action border-0 d-flex align-items-center">
-                                            <span class="bullet bullet-success mr-1"></span> Doc
-                                        </a>
-                                        <a href="#" class="list-group-item list-group-item-action border-0 d-flex align-items-center">
-                                            <span class="bullet bullet-danger mr-1"></span> Bug
-                                        </a>
+                                        <?PHP renderGroups(); ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Modal -->
                         <?PHP HTML::importScript("add_task_modal"); ?>
+                        <?PHP HTML::importScript("create_group_modal"); ?>
+                        <?PHP HTML::importScript("delete_group_modal"); ?>
                     </div>
                 </div>
                 <div class="content-right">
@@ -91,7 +108,9 @@
                                 <div class="todo-app-list-wrapper">
                                     <div class="todo-app-list">
                                         <div class="app-fixed-search">
-                                            <div class="sidebar-toggle d-block d-lg-none"><i class="feather icon-menu"></i></div>
+                                            <div class="sidebar-toggle d-block d-lg-none">
+                                                <i class="feather icon-menu"></i>
+                                            </div>
                                             <fieldset class="form-group position-relative has-icon-left m-0">
                                                 <input type="text" class="form-control" id="todo-search" placeholder="Search..">
                                                 <div class="form-control-position">
@@ -99,12 +118,11 @@
                                                 </div>
                                             </fieldset>
                                         </div>
+                                        <?PHP HTML::importScript("render_group_header"); ?>
                                         <div class="todo-task-list list-group">
                                             <ul class="todo-task-list-wrapper media-list">
                                                 <?PHP
-                                                    HTML::importScript("render_tasks");
                                                     $tasks = getTasks();
-
                                                     renderTasks($tasks);
                                                 ?>
                                             </ul>
@@ -148,19 +166,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Modal -->
                             <?PHP HTML::importScript("edit_task_modal"); ?>
+                            <?PHP HTML::importScript("edit_group_modal"); ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="sidenav-overlay"></div>
         <div class="drag-target"></div>
-
         <?PHP HTML::importSection('main_footer'); ?>
         <?PHP HTML::importSection('main_js'); ?>
-        <?PHP Javascript::importScript("application"); ?>
+        <?PHP Javascript::importScript("application", $_GET); ?>
     </body>
 </html>

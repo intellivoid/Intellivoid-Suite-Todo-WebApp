@@ -1,10 +1,10 @@
-<div class="modal fade" id="addTaskModal" tabindex="-1" role="dialog" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+<div class="modal fade" id="addGroupModal" tabindex="-1" role="dialog" aria-labelledby="addGroupModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md" role="document">
         <div class="modal-content">
-            <section class="todo-form">
-                <form id="form-add-todo" class="todo-input">
+            <section class="group-form">
+                <form id="form-add-group" class="group-input">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addTaskModalLabel">Add Task</h5>
+                        <h5 class="modal-title" id="addGroupModalLabel">Create Group</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times
                                 <i class="vs-icon feather icon-close mr-0"></i>
@@ -12,18 +12,10 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="todo-item-action ml-auto">
-                            <a class="todo-item-color color-none" style="color: #c2c6dc;">
-                                <i class="feather icon-circle"></i>
-                            </a>
-                        </div>
                         <fieldset class="form-group">
-                            <input type="text" class="new-todo-item-title form-control" name="title" id="title" placeholder="Title">
+                            <input type="text" class="new-group-item-name form-control" name="name" id="name" placeholder="Name">
                         </fieldset>
-                        <fieldset class="form-group">
-                            <textarea class="new-todo-item-desc form-control" rows="3" name="description" id="description" placeholder="Add description"></textarea>
-                        </fieldset>
-                        <input type="text" hidden="hidden" class="new-todo-item-color form-control" name="task-input-color" id="task-input-color" value="0">
+                        <input type="text" hidden="hidden" class="new-group-item-color form-control" name="task-input-color" id="task-input-color" value="0">
                     </div>
                     <div class="modal-footer">
                         <fieldset class="form-group position-relative has-icon-left mb-0">
@@ -33,9 +25,9 @@
                             </button>
                         </fieldset>
                         <fieldset class="form-group position-relative has-icon-left mb-0">
-                            <button type="button" class="btn btn-primary add-todo-item" data-dismiss="modal">
+                            <button type="button" class="btn btn-primary add-group-item" data-dismiss="modal">
                                 <i class="feather icon-check d-block d-lg-none"></i>
-                                <span class="d-none d-lg-block">Add Task</span>
+                                <span class="d-none d-lg-block">Create</span>
                             </button>
                         </fieldset>
                     </div>
