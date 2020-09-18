@@ -93,9 +93,9 @@
                                 </div>
                             </div>
                         </div>
-                        <?PHP HTML::importScript("add_task_modal"); ?>
-                        <?PHP HTML::importScript("create_group_modal"); ?>
-                        <?PHP HTML::importScript("delete_group_modal"); ?>
+                        <?PHP HTML::importSection("add_task_modal"); ?>
+                        <?PHP HTML::importSection("create_group_modal"); ?>
+                        <?PHP HTML::importSection("delete_group_modal"); ?>
                     </div>
                 </div>
                 <div class="content-right">
@@ -166,8 +166,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <?PHP HTML::importScript("edit_task_modal"); ?>
-                            <?PHP HTML::importScript("edit_group_modal"); ?>
+                            <?PHP HTML::importSection("edit_task_modal"); ?>
+                            <?PHP HTML::importSection("edit_group_modal"); ?>
                         </div>
                     </div>
                 </div>
