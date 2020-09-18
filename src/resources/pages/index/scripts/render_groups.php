@@ -2,7 +2,8 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use Todo\Todo;
+use Todo\Objects\Group;
+use Todo\Todo;
 
     HTML::importScript("define_todo");
 
@@ -28,7 +29,12 @@
         }
     }
 
-    function renderGroupItem(\Todo\Objects\Group $group)
+    /**
+     * Renders the HTML code for a group item
+     *
+     * @param Group $group
+     */
+    function renderGroupItem(Group $group)
     {
         $Parameters = $_GET;
         $Parameters["group"] = $group->PublicID;

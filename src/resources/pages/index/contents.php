@@ -27,6 +27,7 @@
         <div class="app-content content">
             <div class="content-overlay"></div>
             <?PHP HTML::importScript("callbacks"); ?>
+            <?PHP $_GET["callback"] = "none"; ?>
             <div class="content-area-wrapper">
                 <div class="sidebar-left">
                     <div class="sidebar">
@@ -42,7 +43,6 @@
                                     <?PHP
                                         $FilterParameters = $_GET;
                                         $CurrentGroup = "main";
-
                                         if(isset($_GET["group"]))
                                         {
                                             $CurrentGroup = $_GET["group"];
@@ -177,6 +177,6 @@
         <div class="drag-target"></div>
         <?PHP HTML::importSection('main_footer'); ?>
         <?PHP HTML::importSection('main_js'); ?>
-        <?PHP Javascript::importScript("application", $_GET); ?>
+        <?PHP Javascript::importScript("application", $_GET, false); ?>
     </body>
 </html>

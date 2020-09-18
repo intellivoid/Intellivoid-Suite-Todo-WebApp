@@ -13,7 +13,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="todo-item-action ml-auto">
-                            <a class="todo-item-color color-none" style="color: #c2c6dc;">
+                            <a class="todo-item-color no-update color-none" style="color: #c2c6dc;">
                                 <i class="feather icon-circle"></i>
                             </a>
                         </div>

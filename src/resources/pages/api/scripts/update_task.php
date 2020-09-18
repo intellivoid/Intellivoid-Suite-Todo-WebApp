@@ -28,30 +28,46 @@
         ));
     }
 
-    switch($_POST["color"])
+    if(isset($_POST["title"]) == false)
+    {
+        jsonResponse(false, 400, array(
+            "error_code" => 110,
+            "error_message" => "Missing parameter 'title'"
+        ));
+    }
+
+    if(isset($_POST["description"]) == false)
+    {
+        jsonResponse(false, 400, array(
+            "error_code" => 111,
+            "error_message" => "Missing parameter 'description'"
+        ));
+    }
+
+    switch(urldecode($_POST["color"]))
     {
         case "none":
-            $_POST["color"] = (int)Color::None;
+            $_POST["color"] = (int)urldecode(Color::None);
             break;
 
         case "red":
-            $_POST["color"] = (int)Color::Red;
+            $_POST["color"] = (int)urldecode(Color::Red);
             break;
 
         case "blue":
-            $_POST["color"] = (int)Color::Blue;
+            $_POST["color"] = (int)urldecode(Color::Blue);
             break;
 
         case "yellow":
-            $_POST["color"] = (int)Color::Yellow;
+            $_POST["color"] = (int)urldecode(Color::Yellow);
             break;
 
         case "green":
-            $_POST["color"] = (int)Color::Green;
+            $_POST["color"] = (int)urldecode(Color::Green);
             break;
 
         case "pink":
-            $_POST["color"] = (int)Color::Pink;
+            $_POST["color"] = (int)urldecode(Color::Pink);
             break;
 
         case Color::None:
@@ -60,7 +76,7 @@
         case Color::Yellow:
         case Color::Green:
         case Color::Pink:
-            $_POST["color"] = (int)$_POST["color"];
+            $_POST["color"] = (int)urldecode($_POST["color"]);
             break;
 
         default:
@@ -69,6 +85,10 @@
                 "error_message" => "Invalid value for task color"
             ));
     }
+
+    $_POST["task_id"] = urldecode($_POST["task_id"]);
+    $_POST["title"] = urldecode($_POST["title"]);
+    $_POST["description"] = urldecode($_POST["description"]);
 
     /** @var Todo $TodoManager */
     $TodoManager = DynamicalWeb::getMemoryObject("todo");
@@ -111,13 +131,15 @@
     try
     {
         $Task->Color = (int)$_POST["color"];
+        $Task->Title = $_POST["title"];
+        $Task->Description = $_POST["description"];
         $TodoManager->getTasksManager()->updateTask($Task);
     }
     catch (InvalidColorException $e)
     {
         jsonResponse(false, 400, array(
             "error_code" => 106,
-            "error_message" => "Invalid Task Color"
+            "error_message" => "Invalid Color"
         ));
     }
     catch (InvalidTaskDescriptionException $e)

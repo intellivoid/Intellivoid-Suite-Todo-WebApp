@@ -4,9 +4,9 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use Todo\Abstracts\Color;
-use Todo\Abstracts\SearchMethods\GroupSearchMethod;
-use Todo\Exceptions\GroupNotFoundException;
-use Todo\Exceptions\InvalidTaskDescriptionException;
+    use Todo\Abstracts\SearchMethods\GroupSearchMethod;
+    use Todo\Exceptions\GroupNotFoundException;
+    use Todo\Exceptions\InvalidTaskDescriptionException;
     use Todo\Exceptions\InvalidTaskTitleException;
     use Todo\Todo;
 
@@ -37,22 +37,17 @@ use Todo\Exceptions\InvalidTaskDescriptionException;
 
         if(isset($_POST["title"]))
         {
-            $Title = $_POST["title"];
+            $Title = urldecode($_POST["title"]);
         }
         
         if(isset($_POST["description"]))
         {
-            $Description = $_POST["description"];
-        }
-
-        if(isset($_POST["color"]))
-        {
-            $Color = (int)$_POST["color"];
+            $Description = urldecode($_POST["description"]);
         }
 
         if(isset($_POST["group"]))
         {
-            $SelectedGroup = $_POST["group"];
+            $SelectedGroup = urldecode($_POST["group"]);
         }
 
         /** @var Todo $TodoManager */
@@ -95,13 +90,16 @@ use Todo\Exceptions\InvalidTaskDescriptionException;
         {
             if($SelectedGroupID == null)
             {
-                $TodoManager->getTasksManager()->createTask(WEB_ACCOUNT_ID, $Title, $Description);
+                $TaskObject = $TodoManager->getTasksManager()->createTask(WEB_ACCOUNT_ID, $Title, $Description);
             }
             else
             {
-                $TodoManager->getTasksManager()->createTask(WEB_ACCOUNT_ID, $Title, $Description, [], (int)$SelectedGroupID);
+                $TaskObject = $TodoManager->getTasksManager()->createTask(WEB_ACCOUNT_ID, $Title, $Description, [], (int)$SelectedGroupID);
 
             }
+
+            $TaskObject->Color = (int)$Color;
+            $TodoManager->getTasksManager()->updateTask($TaskObject);
 
             $_GET["action"] = "none";
             $_GET["callback"] = "none";

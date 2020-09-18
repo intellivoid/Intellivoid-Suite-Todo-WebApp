@@ -90,6 +90,10 @@
                 HTML::importScript("update_task_color");
                 break;
 
+            case "update_task":
+                HTML::importScript("update_task");
+                break;
+
             default:
                 jsonResponse(false, 400, array(
                     "error_message" => "The action '" . $_POST["action"] . "' is not valid"

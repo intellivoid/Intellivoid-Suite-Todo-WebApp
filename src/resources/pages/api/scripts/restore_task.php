@@ -12,6 +12,7 @@
     if(isset($_POST["task_id"]) == false)
     {
         jsonResponse(false, 400, array(
+            "error_code" => 108,
             "error_message" => "Missing parameter 'task_id'"
         ));
     }
@@ -27,13 +28,14 @@
     catch (TaskNotFoundException $e)
     {
         jsonResponse(false, 404, array(
-            "error_code" => 100,
+            "error_code" => 107,
             "error_message" => "The requested task was not found"
         ));
     }
     catch(Exception $e)
     {
         jsonResponse(false, 500, array(
+            "error_code" => 108,
             "error_message" => "Internal server error"
         ));
     }
@@ -41,7 +43,7 @@
     if($Task->IsDeleted)
     {
         jsonResponse(false, 404, array(
-            "error_code" => 100,
+            "error_code" => 107,
             "error_message" => "The requested task was not found"
         ));
     }
@@ -49,7 +51,7 @@
     if((int)$Task->AccountID !== (int)WEB_ACCOUNT_ID)
     {
         jsonResponse(false, 403, array(
-            "error_code" => 101,
+            "error_code" => 112,
             "error_message" => "Invalid ownership or access to this task"
         ));
     }
@@ -57,7 +59,7 @@
     if($Task->Properties->IsDeleted == false)
     {
         jsonResponse(false, 400, array(
-            "error_code" => 203,
+            "error_code" => 114,
             "error_message" => "The task cannot be restored because it isn't deleted"
         ));
     }
@@ -71,34 +73,35 @@
     catch (InvalidColorException $e)
     {
         jsonResponse(false, 400, array(
-            "error_code" => 200,
-            "error_message" => "Invalid Color"
+            "error_code" => 106,
+            "error_message" => "Invalid Task Color"
         ));
     }
     catch (InvalidTaskDescriptionException $e)
     {
         jsonResponse(false, 400, array(
-            "error_code" => 201,
+            "error_code" => 102,
             "error_message" => "Invalid Task Description"
         ));
     }
     catch (InvalidTaskTitleException $e)
     {
         jsonResponse(false, 400, array(
-            "error_code" => 202,
+            "error_code" => 101,
             "error_message" => "Invalid Task Title"
         ));
     }
     catch (TaskNotFoundException $e)
     {
         jsonResponse(false, 404, array(
-            "error_code" => 100,
+            "error_code" => 107,
             "error_message" => "The requested task was not found"
         ));
     }
     catch(Exception $e)
     {
         jsonResponse(false, 500, array(
+            "error_code" => 100,
             "error_message" => "Internal server error"
         ));
     }

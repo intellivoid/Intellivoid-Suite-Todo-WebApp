@@ -27,5 +27,41 @@
             case 105:
                 RenderAlert("The group cannot be edited, the group doesn't exist", "danger", "icon-alert-triangle");
                 break;
+
+            case 106:
+                RenderAlert("The task color is invalid", "danger", "icon-alert-triangle");
+                break;
+
+            case 107:
+                RenderAlert("The requested task cannot be found", "danger", "icon-alert-triangle");
+                break;
+
+            case 108:
+                RenderAlert("Invalid request, missing parameter 'task_id'", "danger", "icon-alert-triangle");
+                break;
+
+            case 109:
+                RenderAlert("Invalid request, missing parameter 'color'", "danger", "icon-alert-triangle");
+                break;
+
+            case 110:
+                RenderAlert("Invalid request, missing parameter 'title'", "danger", "icon-alert-triangle");
+                break;
+
+            case 111:
+                RenderAlert("Invalid request, missing parameter 'description'", "danger", "icon-alert-triangle");
+                break;
+
+            case 112:
+                RenderAlert("You don't have the proper permissions to view this content", "danger", "icon-alert-triangle");
+                break;
+
+            case 113:
+                RenderAlert("The task cannot be permanently deleted without being in the trash first", "danger", "icon-alert-triangle");
+                break;
+
+            case 114:
+                RenderAlert("The task cannot be restored because it isn't deleted", "danger", "icon-alert-triangle");
+                break;
         }
     }

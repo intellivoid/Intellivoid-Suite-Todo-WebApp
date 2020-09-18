@@ -133,7 +133,7 @@ use Todo\Objects\Task;
         $TodoManager = DynamicalWeb::getMemoryObject("todo");
 
         ?>
-        <li class="todo-item<?PHP if($task->IsCompleted){ HTML::print(" completed"); } ?>">
+        <li class="todo-item<?PHP if($task->IsCompleted){ HTML::print(" completed"); } ?>" data-toggle="modal" data-target="#editTaskModal">
             <data hidden="hidden" class="todo-item-id" value="<?PHP HTML::print($task->PublicID); ?>"></data>
             <div class="todo-title-wrapper d-flex justify-content-between mb-0">
                 <div class="todo-title-area d-flex align-items-center">
