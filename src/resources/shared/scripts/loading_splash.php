@@ -1,35 +1,26 @@
 <?PHP
-    /** @noinspection PhpUnhandledExceptionInspection */
+/** @noinspection PhpUnhandledExceptionInspection */
 
-    use DynamicalWeb\HTML;
+use DynamicalWeb\HTML;
 ?>
 <!DOCTYPE html>
-    <html lang="en">
+<html lang="en" >
     <head>
-        <?PHP HTML::importSection('generic_headers'); ?>
-        <link href="/assets/css/loader.css" rel="stylesheet">
-        <style>
-            .loader_section{
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                transform: -webkit-translate(-50%, -50%);
-                transform: -moz-translate(-50%, -50%);
-                transform: -ms-translate(-50%, -50%);
-            }
-        </style>
-        <title>Todo</title>
+        <?PHP HTML::importSection("generic_headers_lite"); ?>
+        <title>Intellivoid Suite</title>
     </head>
     <body>
-        <div class="loader_section">
-            <div class="sk-folding-cube">
-                <div class="sk-cube1 sk-cube"></div>
-                <div class="sk-cube2 sk-cube"></div>
-                <div class="sk-cube4 sk-cube"></div>
-                <div class="sk-cube3 sk-cube"></div>
+        <div id="particles-background" class="vertical-centered-box"></div>
+        <div id="particles-foreground" class="vertical-centered-box"></div>
+        <div class="vertical-centered-box">
+            <div class="content">
+                <div class="loader-circle"></div>
+                <div class="loader-line-mask">
+                    <div class="loader-line"></div>
+                </div>
+                <img src="/assets/images/todoc.svg" width="120" height="120">
             </div>
         </div>
-        <?PHP HTML::importSection('generic_js'); ?>
+        <?PHP HTML::importSection("generic_js"); ?>
     </body>
 </html>

@@ -15,6 +15,7 @@
             <div class="modal-body">
                 <h5>About</h5>
                 <p>Intellivoid Suite - Todo (Web Application Build), Copyright &copy; Intellivoid Technologies 2017-<?PHP \DynamicalWeb\HTML::print(date("Y")); ?></p>
+                <p>Todo Logo designed & created by <a href="https://t.me/DavideGalileiPortfolio">Davide Galilei</a> for Intellivoid Technologies</p>
                 <h5>Components Info (PPM)</h5>
                 <ul class="list-unstyled">
                     <?PHP

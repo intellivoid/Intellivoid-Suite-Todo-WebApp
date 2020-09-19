@@ -55,11 +55,8 @@ use DynamicalWeb\HTML;
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#appInfoModal">
                                 <i class="feather icon-info"></i> Application Info
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="https://accounts.intellivoid.net/">
                                 <i class="feather icon-user"></i> Manage Account
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="feather icon-power"></i> Logout
                             </a>
                         </div>
                     </li>

@@ -18,10 +18,10 @@
             </div>
 
             <div class="float-right">
-                <a class="todo-item-restore text-light pr-1" data-toggle="modal" data-target="#editGroupModal">
+                <a class="text-light pr-1" data-toggle="modal" data-target="#editGroupModal">
                     <i class="feather icon-edit"></i>
                 </a>
-                <a class="todo-item-restore text-light pr-1" data-toggle="modal" data-target="#deleteGroupModal">
+                <a class="text-light pr-1" data-toggle="modal" data-target="#deleteGroupModal">
                     <i class="feather icon-trash"></i>
                 </a>
             </div>

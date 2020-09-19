@@ -177,6 +177,6 @@
         <div class="drag-target"></div>
         <?PHP HTML::importSection('main_footer'); ?>
         <?PHP HTML::importSection('main_js'); ?>
-        <?PHP Javascript::importScript("application", $_GET, false); ?>
+        <?PHP Javascript::importScript("application", $_GET); ?>
     </body>
 </html>
