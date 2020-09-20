@@ -24,7 +24,7 @@ use Todo\Todo;
         {
             ?>
             <img src="/assets/images/undraw/no_groups.svg" alt="No Groups" class="img-fluid my-2" style="height: 126px;">
-            <h4 class="text-center mb-2">No Groups</h4>
+            <h4 class="text-center mb-2"><?PHP HTML::print(TEXT_PLACEHOLDER_NO_GROUPS); ?></h4>
             <?php
         }
     }

@@ -65,4 +65,5 @@
     define('WEB_ACCOUNT_PUBID', $Cookie->Data['account_pubid'], false);
     define('WEB_ACCOUNT_ID', $Cookie->Data['account_id'], false);
     define('WEB_ACCOUNT_USERNAME', $Cookie->Data['account_username'], false);
+    define('WEB_ACCESS_EMAIL', $Cookie->Data['account_email'], false);
     define('WEB_ACCESS_TOKEN', $Cookie->Data['access_token'], false);

@@ -2,6 +2,7 @@
 
 use COASniffle\Abstracts\AvatarResourceName;
 use COASniffle\Handlers\COA;
+use DynamicalWeb\DynamicalWeb;
 use DynamicalWeb\HTML;
 
 ?>
@@ -9,7 +10,7 @@ use DynamicalWeb\HTML;
     <div class="navbar-header d-xl-block d-none">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item">
-                <a class="navbar-brand" href="../../../html/ltr/horizontal-menu-template-dark/index.html">
+                <a class="navbar-brand" href="<?PHP DynamicalWeb::getRoute("index", [], true); ?>">
                     <div class="brand-logo"></div>
                 </a>
             </li>
@@ -45,7 +46,7 @@ use DynamicalWeb\HTML;
                                 <span class="user-name text-bold-600">
                                     <?PHP HTML::print(WEB_ACCOUNT_USERNAME); ?>
                                 </span>
-                                <span class="user-status">Intellivoid Accounts</span>
+                                <span class="user-status"><?PHP HTML::print(WEB_ACCESS_EMAIL); ?></span>
                             </div>
                             <span>
                                 <img class="round" src="<?PHP HTML::print(COA::getAvatarUrl(AvatarResourceName::Normal, WEB_ACCOUNT_PUBID)); ?>" alt="<?PHP HTML::print(WEB_ACCOUNT_USERNAME); ?>" height="40" width="40">
@@ -53,10 +54,10 @@ use DynamicalWeb\HTML;
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#appInfoModal">
-                                <i class="feather icon-info"></i> Application Info
+                                <i class="feather icon-info"></i> <?PHP HTML::print(TEXT_NAV_APPLICATION_INFO); ?>
                             </a>
                             <a class="dropdown-item" href="https://accounts.intellivoid.net/">
-                                <i class="feather icon-user"></i> Manage Account
+                                <i class="feather icon-user"></i> <?PHP HTML::print(TEXT_NAV_MANAGE_ACCOUNT); ?>
                             </a>
                         </div>
                     </li>

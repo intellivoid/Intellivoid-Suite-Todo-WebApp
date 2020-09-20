@@ -16,7 +16,7 @@
                     <section class="group-form">
                         <form id="form-delete-group" class="group-input">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="deleteGroupModalLabel">Delete Group</h5>
+                                <h5 class="modal-title" id="deleteGroupModalLabel"><?PHP HTML::print(TEXT_DELETE_GROUP_MODAL_TITLE); ?></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times
                                     <i class="vs-icon feather icon-close mr-0"></i>
@@ -24,20 +24,19 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <p>Are you sure you want to delete this group? all tasks associated with this group will
-                                    be deleted as well.</p>
+                                <p><?PHP HTML::print(TEXT_DELETE_GROUP_BODY); ?></p>
                             </div>
                             <div class="modal-footer">
                                 <fieldset class="form-group position-relative has-icon-left mb-0">
                                     <button type="button" class="btn btn-outline-light" data-dismiss="modal">
                                         <i class="feather icon-x d-block d-lg-none"></i>
-                                        <span class="d-none d-lg-block">Cancel</span>
+                                        <span class="d-none d-lg-block"><?PHP HTML::print(TEXT_DELETE_GROUP_CANCEL_BUTTON); ?></span>
                                     </button>
                                 </fieldset>
                                 <fieldset class="form-group position-relative has-icon-left mb-0">
                                     <button type="button" class="btn btn-danger delete-group-item" data-dismiss="modal">
                                         <i class="feather icon-check d-block d-lg-none"></i>
-                                        <span class="d-none d-lg-block">Delete</span>
+                                        <span class="d-none d-lg-block"><?PHP HTML::print(TEXT_DELETE_GROUP_DELETE_BUTTON); ?></span>
                                     </button>
                                 </fieldset>
                             </div>

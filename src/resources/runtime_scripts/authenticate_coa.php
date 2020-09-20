@@ -69,6 +69,7 @@
         $Cookie->Data['account_pubid'] = $UserInformation->PublicID;
         $Cookie->Data['account_id'] = $UserInformation->Tag;
         $Cookie->Data['account_username'] = $UserInformation->Username;
+        $Cookie->Data['account_email'] = $UserInformation->EmailAddress->Value;
         $Cookie->Data['access_token'] = $_GET['access_token'];
 
         // Force refresh cache

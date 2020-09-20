@@ -33,7 +33,7 @@
         ?>
         <div class="app-fixed-info d-flex justify-content-between">
             <div class="align-items-center">
-                <a href="#" style="color: #c2c6dc;">All Tasks</a>
+                <a href="#" style="color: #c2c6dc;"><?PHP HTML::print(TEXT_SELECTED_GROUP_HEADER_ALL_TASKS); ?></a>
             </div>
         </div>
         <?PHP
