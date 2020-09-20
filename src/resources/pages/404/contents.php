@@ -10,7 +10,6 @@
         <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
     <body class="horizontal-layout horizontal-menu 1-column navbar-floating footer-static blank-page" data-open="hover" data-menu="horizontal-menu" data-col="1-columns">
-        <?PHP HTML::importSection('generic_bhelper'); ?>
         <div class="app-content content mb-0 pt-0" style="min-height: auto; overflow: hidden;">
             <div class="content-wrapper mt-0">
                 <div class="content-body">

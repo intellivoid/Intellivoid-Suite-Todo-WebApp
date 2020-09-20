@@ -168,6 +168,7 @@
                             </div>
                             <?PHP HTML::importSection("edit_task_modal"); ?>
                             <?PHP HTML::importSection("edit_group_modal"); ?>
+                            <?PHP HTML::importSection("change_language_modal"); ?>
                         </div>
                     </div>
                 </div>
