@@ -1,9 +1,16 @@
 <?PHP
 
-use COASniffle\Abstracts\AvatarResourceName;
-use COASniffle\Handlers\COA;
-use DynamicalWeb\DynamicalWeb;
-use DynamicalWeb\HTML;
+    use COASniffle\Abstracts\AvatarResourceName;
+    use COASniffle\Handlers\COA;
+    use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\HTML;
+
+    $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
+    if(strlen($UsernameSafe) > 16)
+    {
+        $UsernameSafe = substr($UsernameSafe, 0 ,16);
+        $UsernameSafe .= "...";
+    }
 
 ?>
 <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-fixed navbar-brand-center">
@@ -44,7 +51,7 @@ use DynamicalWeb\HTML;
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">
                                 <span class="user-name text-bold-600">
-                                    <?PHP HTML::print(WEB_ACCOUNT_USERNAME); ?>
+                                    <?PHP HTML::print($UsernameSafe); ?>
                                 </span>
                                 <span class="user-status"><?PHP HTML::print(WEB_ACCESS_EMAIL); ?></span>
                             </div>
