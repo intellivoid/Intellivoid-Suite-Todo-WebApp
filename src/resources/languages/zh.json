@@ -1,0 +1,90 @@
+{
+    "language": {
+        "name": "chinese",
+        "iso_639-1": "zh"
+    },
+    "pages": {
+        "404": {
+            "PAGE_TITLE": "找不到404",
+            "HEADER": "404",
+            "HOME_LINK": "回到家"
+        },
+        "500": {
+            "PAGE_TITLE": "500内部服务器错误",
+            "HEADER": "500",
+            "HOME_LINK": "回到家"
+        },
+        "index": {
+            "PAGE_TITLE": "一切",
+            "BUTTON_CREATE_TASK": "创建任务",
+            "TASKS_OVERVIEW": "总览",
+            "TASKS_FILTER_ALL": "所有",
+            "TASKS_FILTER_UNCOMPLETED": "未完成",
+            "TASKS_FILTER_COMPLETED": "已完成",
+            "TASKS_FILTER_TRASHED": "被破坏",
+            "PLACEHOLDER_NO_DELETED_TASKS": "这里没有已删除的任务",
+            "PLACEHOLDER_NO_COMPLETED_TASKS": "没有完成的任务",
+            "PLACEHOLDER_NO_TASKS": "今天没有任务，继续！",
+            "PLACEHOLDER_NO_GROUPS": "没有团体",
+            "PLACEHOLDER_NO_RESULTS": "未找到结果",
+            "PLACEHOLDER_SEARCH": "搜索",
+            "PLACEHOLDER_GROUPS": "团体",
+            "PLACEHOLDER_FILTERS": "筛选器",
+            "SELECTED_GROUP_HEADER_ALL_TASKS": "所有任务",
+            "CALLBACK_100": "我们的服务器出现意外错误，请稍后再试。",
+            "CALLBACK_101": "任务标题无效，不能为空或大于526个字符",
+            "CALLBACK_102": "任务说明无效，不能超过2526个字符",
+            "CALLBACK_103": "群组名称无效，不能超过256个字符",
+            "CALLBACK_104": "尝试获取有关该组的信息时出错",
+            "CALLBACK_105": "该群组无法编辑，该群组不存在",
+            "CALLBACK_106": "任务颜色无效",
+            "CALLBACK_107": "找不到请求的任务",
+            "CALLBACK_108": "请求无效，缺少参数“task_id”",
+            "CALLBACK_109": "请求无效，缺少参数“color”",
+            "CALLBACK_110": "请求无效，缺少参数“title”",
+            "CALLBACK_111": "请求无效，缺少参数“description”",
+            "CALLBACK_112": "您没有查看此内容的适当权限",
+            "CALLBACK_113": "必须先丢入垃圾箱才能永久删除任务",
+            "CALLBACK_114": "无法删除该任务，因为它没有被删除"
+        }
+    },
+    "sections": {
+        "main_nav": {
+            "NAV_APPLICATION_INFO": "申请信息",
+            "NAV_MANAGE_ACCOUNT": "管理帐户"
+        },
+        "create_task_modal": {
+            "CREATE_TASK_MODAL_TITLE": "创建任务",
+            "CREATE_TASK_TITLE_PLACEHOLDER": "标题",
+            "CREATE_TASK_DESCRIPTION_PLACEHOLDER": "关于此任务的可选说明",
+            "CREATE_TASK_CANCEL_BUTTON": "取消",
+            "CREATE_TASK_CREATE_BUTTON": "创造"
+        },
+        "create_group_modal": {
+            "CREATE_GROUP_MODAL_TITLE": "创建组",
+            "CREATE_GROUP_NAME_PLACEHOLDER": "团队名字",
+            "CREATE_GROUP_CANCEL_BUTTON": "取消",
+            "CREATE_GROUP_CREATE_BUTTON": "创造"
+        },
+        "delete_group_modal": {
+            "DELETE_GROUP_MODAL_TITLE": "删除群组",
+            "DELETE_GROUP_BODY": "您确定要删除该组吗？与该组关联的所有任务也将被删除。",
+            "DELETE_GROUP_CANCEL_BUTTON": "取消",
+            "DELETE_GROUP_DELETE_BUTTON": "删除"
+        },
+        "edit_group_modal": {
+            "EDIT_GROUP_MODAL_TITLE": "编辑组",
+            "EDIT_GROUP_NAME_PLACEHOLDER": "团队名字",
+            "EDIT_GROUP_CANCEL_BUTTON": "取消",
+            "EDIT_GROUP_UPDATE_BUTTON": "更新资料"
+        },
+        "edit_task_modal":
+        {
+            "EDIT_TASK_MODAL_NAME": "编辑任务",
+            "EDIT_TASK_TITLE_PLACEHOLDER": "任务标题",
+            "EDIT_TASK_DESCRIPTION_PLACEHOLDER": "有关任务的可选说明",
+            "EDIT_TASK_CANCEL_BUTTON": "取消",
+            "EDIT_TASK_UPDATE_BUTTON": "更新资料"
+        }
+    }
+}
