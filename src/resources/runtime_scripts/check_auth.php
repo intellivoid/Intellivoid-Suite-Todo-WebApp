@@ -50,7 +50,6 @@
     }
     catch(Exception $exception)
     {
-        var_dump($exception);
         Page::staticResponse(
             'Web Applications Error',
             'Web Sessions Issue',
