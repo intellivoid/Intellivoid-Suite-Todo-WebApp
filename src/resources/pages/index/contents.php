@@ -140,7 +140,7 @@
                                                         case "deleted":
                                                             $NoItemsText = TEXT_PLACEHOLDER_NO_DELETED_TASKS;
                                                             $NoItemsImageSource = "/assets/images/undraw/no_tasks_trashed.svg";
-                                                            $NoItemsImageAlt = PLACEHOLDER_NO_DELETED_TASKS;
+                                                            $NoItemsImageAlt = TEXT_PLACEHOLDER_NO_DELETED_TASKS;
                                                             break;
 
                                                         case "completed":

@@ -60,9 +60,17 @@
 
     DynamicalWeb::setMemoryObject('(cookie)web_session', $Cookie);
 
-    define('WEB_SESSION_ACTIVE', $Cookie->Data['session_active'], false);
-    define('WEB_ACCOUNT_PUBID', $Cookie->Data['account_pubid'], false);
-    define('WEB_ACCOUNT_ID', $Cookie->Data['account_id'], false);
-    define('WEB_ACCOUNT_USERNAME', $Cookie->Data['account_username'], false);
-    define('WEB_ACCESS_EMAIL', $Cookie->Data['account_email'], false);
-    define('WEB_ACCESS_TOKEN', $Cookie->Data['access_token'], false);
+    define('WEB_SESSION_ACTIVE', $Cookie->Data['session_active']);
+    define('WEB_ACCOUNT_PUBID', $Cookie->Data['account_pubid']);
+    define('WEB_ACCOUNT_ID', $Cookie->Data['account_id']);
+    define('WEB_ACCOUNT_USERNAME', $Cookie->Data['account_username']);
+    define('WEB_ACCESS_TOKEN', $Cookie->Data['access_token']);
+
+    if(isset($Cookie->Data["account_email"]) == false)
+    {
+        define('WEB_ACCESS_EMAIL', "");
+    }
+    else
+    {
+        define('WEB_ACCESS_EMAIL', $Cookie->Data['account_email']);
+    }
